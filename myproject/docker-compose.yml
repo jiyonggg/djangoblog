@@ -3,7 +3,7 @@ services:
   web:
     image: server
     container_name: web
-    command: bash -c "gunicorn myproject.wsgi:application -b 0.0.0.0:8000 && python manage.py collectstatic"
+    command: bash -c "python manage.py collectstatic && gunicorn myproject.wsgi:application -b 0.0.0.0:8000"
     ports:
       - "8000:8000"
     restart: always
